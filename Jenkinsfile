@@ -5,7 +5,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                echo 'Checking out JMeter scripts from GitHub'
+                echo 'Checking out JMeter scripts'
                 checkout scm
             }
         }
@@ -13,7 +13,7 @@ pipeline {
         stage('Verify JMeter') {
             steps {
                 bat '''
-                "C:\\Users\\LENOVO\\Downloads\\apache-jmeter-5.6.3\\apache-jmeter-5.6.3\\bin\\jmeter.bat" -v
+                    "C:\\Users\\LENOVO\\Downloads\\apache-jmeter-5.6.3\\apache-jmeter-5.6.3\\bin\\jmeter.bat" -v
                 '''
             }
         }
@@ -21,9 +21,19 @@ pipeline {
         stage('Execute Performance Test') {
             steps {
                 bat '''
-                if not exist Results mkdir Results
+                    if not exist Results mkdir Results
 
-                "C:\\Users\\LENOVO\\Downloads\\apache-jmeter-5.6.3\\apache-jmeter-5.6.3\\bin\\jmeter.bat" -n -t TestScripts\\MACBOOKING.jmx -l Results\\results.jtl -e -o Results\\HTML
+                    if exist Results\\results.jtl (
+                        del /f /q Results\\results.jtl
+                    )
+
+                    if exist Results\\HTML (
+                        rmdir /s /q Results\\HTML
+                    )
+
+                    "C:\\Users\\LENOVO\\Downloads\\apache-jmeter-5.6.3\\apache-jmeter-5.6.3\\bin\\jmeter.bat" -n -t TestScripts\\MACBOOKING.jmx -l Results\\results.jtl -e -o Results\\HTML
+
+                    if errorlevel 1 exit /b 1
                 '''
             }
         }
@@ -36,7 +46,7 @@ pipeline {
                     reportName: 'JMeter Performance Report',
                     keepAll: true,
                     alwaysLinkToLastBuild: true,
-                    allowMissing: true
+                    allowMissing: false
                 ])
             }
         }

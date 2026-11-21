@@ -1,0 +1,55 @@
+2026-11-21 17:10:40,236 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2026-11-21 17:10:40,253 INFO o.a.j.JMeter: Loading user properties from: C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin\user.properties
+2026-11-21 17:10:40,254 INFO o.a.j.JMeter: Loading system properties from: C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin\system.properties
+2026-11-21 17:10:40,262 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2026-11-21 17:10:40,262 INFO o.a.j.JMeter: Version 5.6.3
+2026-11-21 17:10:40,262 INFO o.a.j.JMeter: java.version=26.0.1
+2026-11-21 17:10:40,262 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2026-11-21 17:10:40,262 INFO o.a.j.JMeter: os.name=Windows 11
+2026-11-21 17:10:40,262 INFO o.a.j.JMeter: os.arch=amd64
+2026-11-21 17:10:40,263 INFO o.a.j.JMeter: os.version=10.0
+2026-11-21 17:10:40,263 INFO o.a.j.JMeter: file.encoding=UTF-8
+2026-11-21 17:10:40,263 INFO o.a.j.JMeter: java.awt.headless=null
+2026-11-21 17:10:40,263 INFO o.a.j.JMeter: Max memory     =1073741824
+2026-11-21 17:10:40,263 INFO o.a.j.JMeter: Available Processors =8
+2026-11-21 17:10:40,278 INFO o.a.j.JMeter: Default Locale=English (EN)
+2026-11-21 17:10:40,278 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2026-11-21 17:10:40,278 INFO o.a.j.JMeter: JMeterHome=C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3
+2026-11-21 17:10:40,278 INFO o.a.j.JMeter: user.dir  =C:\JMeter_CICD
+2026-11-21 17:10:40,279 INFO o.a.j.JMeter: PWD       =C:\JMeter_CICD
+2026-11-21 17:10:40,279 INFO o.a.j.JMeter: IP: 192.168.29.243 Name: DESKTOP-4DBSFCB FullName: DESKTOP-4DBSFCB
+2026-11-21 17:10:40,289 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2026-11-21 17:10:40,452 INFO o.a.j.JMeterGuiLauncher: Setting LAF to: laf:javax.swing.plaf.metal.MetalLookAndFeel
+2026-11-21 17:10:41,130 INFO o.a.j.r.ClassFinder: Will scan jar C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\lib\ext\jmeter-plugins-manager-2.0.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.gui.action.Command], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-11-21 17:10:41,166 INFO o.a.j.r.ClassFinder: Will scan jar C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\lib\ext\jmeter-plugins-casutg-3.1.1.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.gui.action.Command], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-11-21 17:10:41,179 INFO o.a.j.r.ClassFinder: Will scan jar C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\lib\ext\di-extended-csv-2.3.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.gui.action.Command], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-11-21 17:10:41,228 INFO o.a.j.r.ClassFinder: Will scan jar C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\lib\ext\jmeter-plugins-manager-2.0.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.gui.plugin.MenuCreator], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-11-21 17:10:41,231 INFO o.a.j.r.ClassFinder: Will scan jar C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\lib\ext\jmeter-plugins-casutg-3.1.1.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.gui.plugin.MenuCreator], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-11-21 17:10:41,232 INFO o.a.j.r.ClassFinder: Will scan jar C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\lib\ext\di-extended-csv-2.3.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.gui.plugin.MenuCreator], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-11-21 17:10:41,300 INFO o.j.r.JARSourceHTTP: Found cached repo
+2026-11-21 17:10:41,381 INFO o.j.r.PluginManager: Plugins Status: [jpgc-casutg=3.1.1, extended-csv-dataset-config=2.3, jpgc-plugins-manager=2.0, jmeter-core=5.6.3, jmeter-ftp=5.6.3, jmeter-http=5.6.3, jmeter-jdbc=5.6.3, jmeter-jms=5.6.3, jmeter-junit=5.6.3, jmeter-java=5.6.3, jmeter-ldap=5.6.3, jmeter-mail=5.6.3, jmeter-mongodb=5.6.3, jmeter-native=5.6.3, jmeter-tcp=5.6.3, jmeter-components=5.6.3]
+2026-11-21 17:11:42,302 INFO o.a.j.s.FileServer: Default base='C:\JMeter_CICD'
+2026-11-21 17:11:42,305 INFO o.a.j.g.a.Load: Loading file: C:\JMeter_CICD\TestScripts\MACBOOKING.jmx
+2026-11-21 17:11:42,305 INFO o.a.j.s.FileServer: Set new base='C:\JMeter_CICD\TestScripts'
+2026-11-21 17:11:42,575 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2026-11-21 17:11:42,580 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2026-11-21 17:11:42,582 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2026-11-21 17:11:42,583 INFO o.a.j.s.SaveService: Loading file: C:\JMeter_CICD\TestScripts\MACBOOKING.jmx
+2026-11-21 17:11:42,683 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-11-21 17:11:42,683 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-11-21 17:11:42,683 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-11-21 17:11:42,683 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-11-21 17:11:42,683 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2026-11-21 17:11:42,683 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2026-11-21 17:11:42,900 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2026-11-21 17:11:42,900 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2026-11-21 17:11:42,900 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2026-11-21 17:11:42,900 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2026-11-21 17:11:42,984 INFO o.a.j.r.ClassFinder: Will scan jar C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\lib\ext\jmeter-plugins-manager-2.0.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.visualizers.ResultRenderer], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-11-21 17:11:42,986 INFO o.a.j.r.ClassFinder: Will scan jar C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\lib\ext\jmeter-plugins-casutg-3.1.1.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.visualizers.ResultRenderer], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-11-21 17:11:42,987 INFO o.a.j.r.ClassFinder: Will scan jar C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\lib\ext\di-extended-csv-2.3.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.visualizers.ResultRenderer], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-11-21 17:11:43,002 INFO o.a.j.r.ClassFinder: Will scan jar C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\lib\ext\jmeter-plugins-manager-2.0.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.visualizers.RequestView], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-11-21 17:11:43,004 INFO o.a.j.r.ClassFinder: Will scan jar C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\lib\ext\jmeter-plugins-casutg-3.1.1.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.visualizers.RequestView], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-11-21 17:11:43,004 INFO o.a.j.r.ClassFinder: Will scan jar C:\Users\LENOVO\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\lib\ext\di-extended-csv-2.3.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.visualizers.RequestView], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-11-21 17:11:43,238 INFO o.a.j.s.FileServer: Set new base='C:\JMeter_CICD\TestScripts'
+2026-11-21 17:13:57,418 ERROR o.a.j.g.a.AbstractAction: Could not delete existing file C:\JMeter_CICD
