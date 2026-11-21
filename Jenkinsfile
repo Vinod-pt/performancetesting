@@ -14,7 +14,7 @@ pipeline {
 
         string(
             name: 'RAMPUP',
-            defaultValue: '10',
+            defaultValue: '60',
             description: 'Ramp-up time in seconds'
         )
 
