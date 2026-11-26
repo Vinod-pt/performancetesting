@@ -1,0 +1,194 @@
+name: JMeter Performance Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Target environment"
+        type: choice
+        options:
+          - DEV
+          - QA
+          - UAT
+        default: QA
+        required: true
+
+      base_url:
+        description: "Target hostname"
+        type: string
+        required: true
+
+      users:
+        description: "Number of virtual users"
+        type: string
+        default: "2"
+        required: true
+
+      rampup:
+        description: "Ramp-up time in seconds"
+        type: string
+        default: "6"
+        required: true
+
+      duration:
+        description: "Test duration in seconds"
+        type: string
+        default: "300"
+        required: true
+
+      target_tps:
+        description: "Target samples per second"
+        type: string
+        default: "5"
+        required: true
+
+      max_error_pct:
+        description: "Maximum allowed error percentage"
+        type: string
+        default: "1"
+        required: true
+
+      p95_threshold_ms:
+        description: "Maximum P95 response time in ms"
+        type: string
+        default: "3000"
+        required: true
+
+jobs:
+  performance-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Install JMeter
+        run: |
+          curl -L https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.6.3.tgz -o jmeter.tgz
+          tar -xzf jmeter.tgz
+
+      - name: Validate inputs and calculate throughput
+        env:
+          USERS: ${{ inputs.users }}
+          RAMPUP: ${{ inputs.rampup }}
+          DURATION: ${{ inputs.duration }}
+          TARGET_TPS: ${{ inputs.target_tps }}
+          MAX_ERROR: ${{ inputs.max_error_pct }}
+          P95_LIMIT: ${{ inputs.p95_threshold_ms }}
+          BASE_URL: ${{ inputs.base_url }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import re
+          import sys
+
+          numeric = ["USERS", "RAMPUP", "DURATION",
+                     "TARGET_TPS", "MAX_ERROR", "P95_LIMIT"]
+
+          for key in numeric:
+              value = os.environ.get(key, "")
+              try:
+                  number = float(value)
+                  if number < 0:
+                      raise ValueError()
+                  if key in ["USERS", "DURATION", "P95_LIMIT"] and number <= 0:
+                      raise ValueError()
+              except ValueError:
+                  sys.exit(f"Invalid input: {key}={value}")
+
+          if not re.match(r"^https?://", os.environ["BASE_URL"]):
+              sys.exit("BASE_URL must start with http:// or https://")
+
+          tpm = float(os.environ["TARGET_TPS"]) * 60
+          with open(os.environ["GITHUB_ENV"], "a") as f:
+              f.write(f"TARGET_TPM={tpm}\n")
+          PY
+
+      - name: Run JMeter test
+        env:
+          ENVIRONMENT: ${{ inputs.environment }}
+          BASE_URL: ${{ inputs.base_url }}
+          USERS: ${{ inputs.users }}
+          RAMPUP: ${{ inputs.rampup }}
+          DURATION: ${{ inputs.duration }}
+          TARGET_TPS: ${{ inputs.target_tps }}
+        run: |
+          mkdir -p results
+
+          apache-jmeter-5.6.3/bin/jmeter \
+            -n \
+            -t TestScripts/MACBOOKING.jmx \
+            -l results/result.jtl \
+            -e \
+            -o results/html-report \
+            -Jenvironment="$ENVIRONMENT" \
+            -Jhost="$BASE_URL" \
+            -Jusers="$USERS" \
+            -Jrampup="$RAMPUP" \
+            -Jduration="$DURATION" \
+            -Jtarget_tps="$TARGET_TPS" \
+            -Jtarget_tpm="$TARGET_TPM"
+
+      - name: Validate performance results
+        if: always()
+        env:
+          MAX_ERROR: ${{ inputs.max_error_pct }}
+          P95_LIMIT: ${{ inputs.p95_threshold_ms }}
+        run: |
+          if [ ! -f results/result.jtl ]; then
+            echo "JMeter result file not found."
+            exit 1
+          fi
+
+          python3 - <<'PY'
+          import csv, math, os, sys
+
+          with open("results/result.jtl", newline="") as f:
+              rows = list(csv.DictReader(f))
+
+          if not rows:
+              sys.exit("No JMeter samples found.")
+
+          elapsed = [int(r["elapsed"]) for r in rows]
+          timestamps = [int(r["timeStamp"]) for r in rows]
+          failures = sum(1 for r in rows
+                         if r.get("success", "").lower() != "true")
+
+          total = len(rows)
+          error_pct = failures * 100 / total
+          p95 = sorted(elapsed)[math.ceil(0.95 * total) - 1]
+          start = min(timestamps)
+          end = max(int(r["timeStamp"]) + int(r["elapsed"]) for r in rows)
+          seconds = max((end - start) / 1000, 0.001)
+          actual_tps = total / seconds
+
+          print(f"Samples: {total}")
+          print(f"Failures: {failures}")
+          print(f"Error percentage: {error_pct:.2f}%")
+          print(f"Actual samples/sec: {actual_tps:.2f}")
+          print(f"P95 response time: {p95} ms")
+
+          failed = (
+              error_pct > float(os.environ["MAX_ERROR"]) or
+              p95 > float(os.environ["P95_LIMIT"])
+          )
+
+          if failed:
+              sys.exit("FAIL: Performance acceptance criteria breached.")
+
+          print("PASS: Error and P95 thresholds met.")
+          PY
+
+      - name: Upload JMeter results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: JMeter-Test-Results
+          path: results/
+          if-no-files-found: warn
